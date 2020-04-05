@@ -7,7 +7,6 @@ Programme fonctionnel pour la multiplicationn matricielle
 
 """
 
-
 def SaisieEntier(message) :
     """
     Fonction permettant de saisir un entier avec
@@ -115,7 +114,7 @@ def SaisieTaille(nomMat):
 def SaisieMatrice(nomMat,taille) :
     """
     Fonction permettant de saisir une matrice de taille donnée
-    
+
     Parameters
     ----------
     nomMat : String
@@ -129,7 +128,7 @@ def SaisieMatrice(nomMat,taille) :
     -------
     M : List
         une liste de listes avec chaque sous-liste représentant une ligne
-    
+
     Example
     -------
     >>> M = SaisieMatrice("M",(2,2))
@@ -167,7 +166,7 @@ def AfficheMatrice(nomMat,M) :
     >>> AfficheMatrice("M",M)
       _________
      /Matrice M\_______________
-     M = 
+     M =
       1      2
       3      4
     """
@@ -197,7 +196,7 @@ def MultiplicationMatrice(A,B) :
     -------
     C : List
         Matrice C au format liste de listes
-        
+
     Example
     -------
     >>> A = [[1, 2], [3, 4]]
@@ -205,13 +204,13 @@ def MultiplicationMatrice(A,B) :
     >>> C = MultiplicationMatrice(A,B)
     >>> print(C)
     [[2.0, 1.0], [4.0, 3.0]]
-    
+
     On peut aussi afficher la matrice via AfficheMatrice
-    
+
     >>> AfficheMatrice("C",C)
       _________
      /Matrice C\_______________
-     C = 
+     C =
       2      1
       4      3
     """
