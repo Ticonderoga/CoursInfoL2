@@ -50,7 +50,20 @@ class Rectangle():
         ycentre = self.origine.y + self.hauteur/2
         C = Point(xcentre,ycentre,"centre du rectangle")
         return C
-        
+
+    def contient(self, P = Point()):
+        testx = ((P.x) <= (self.origine.x+self.largeur)) and ((P.x)>=self.origine.x) 
+        testy = ((P.y) <= (self.origine.y+self.hauteur)) and ((P.y)>=self.origine.y) 
+        if testx and testy :
+            return True
+        else :
+            return False
+
+class Carre(Rectangle) :
+    
+    def __init__(self, origine = Point(), cote = 1):
+        Rectangle.__init__(self, origine, largeur=cote , hauteur=cote )
+        self.cote = cote
 
 if __name__=='__main__' :
     monpoint = Point(1,2.5,"P")
@@ -58,4 +71,4 @@ if __name__=='__main__' :
     maboite = Rectangle()
     maboite2 = Rectangle(monpoint, 4, 5)
     maboite3 = Rectangle(Point(5,3,"A"),12,4)
-    
+    moncarre = Carre(monpoint,2)
