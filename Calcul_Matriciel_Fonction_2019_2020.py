@@ -2,12 +2,13 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Mar  9 08:22:23 2020
-Programme fonctionnel pour la multiplicationn matricielle
+Programme fonctionnel pour la multiplication matricielle
 @author: Philippe Baucour
 
 """
 
-def SaisieEntier(message) :
+
+def SaisieEntier(message):
     """
     Fonction permettant de saisir un entier avec
     un message spécifique :
@@ -33,17 +34,20 @@ def SaisieEntier(message) :
     >>> print(n)
     4
     """
-    test=True
-    while test :
-            try :
-                n=eval(input(message))
-                test = type(n)!= int or n<=0
-            except NameError :
+    test = True
+    while test:
+        try:
+            n = eval(input(message))
+            test = type(n) != int or n <= 0
+            if test:
                 print("Veuillez entrer un nombre entier positif")
-                # message = message +' [SVP] '
+        except NameError:
+            print("Veuillez entrer un nombre entier positif")
+            # message = message +' [SVP] '
     return n
 
-def TestTaille(taille1,taille2):
+
+def TestTaille(taille1, taille2):
     """
     Fonctionnant permettant de tester 2 tailles de matrices pour effectuer une
     multiplication matricielle ?
@@ -77,7 +81,7 @@ def TestTaille(taille1,taille2):
 
     """
     res = False
-    if taille1[1]==taille2[0] :
+    if taille1[1] == taille2[0]:
         res = True
     return res
 
@@ -109,9 +113,10 @@ def SaisieTaille(nomMat):
     m = SaisieEntier("Donnez le nombre de lignes : ")
     n = SaisieEntier("Donnez le nombre de colonnes : ")
 
-    return (m,n)
+    return (m, n)
 
-def SaisieMatrice(nomMat,taille) :
+
+def SaisieMatrice(nomMat, taille):
     """
     Fonction permettant de saisir une matrice de taille donnée
 
@@ -140,7 +145,7 @@ def SaisieMatrice(nomMat,taille) :
     [[1, 2], [3, 4]]
     """
 
-    la,ca = taille
+    la, ca = taille
     A = [[None]*(ca) for i in range(la)]
     for i in range(la):
         for j in range(ca):
@@ -149,7 +154,8 @@ def SaisieMatrice(nomMat,taille) :
 
     return A
 
-def AfficheMatrice(nomMat,M) :
+
+def AfficheMatrice(nomMat, M):
     """
     Fonction permettant d'afficher à une matrice avec un nom
 
@@ -181,7 +187,8 @@ def AfficheMatrice(nomMat,M) :
             print("     ", M[i][j], end="")
         print("")
 
-def MultiplicationMatrice(A,B) :
+
+def MultiplicationMatrice(A, B):
     """
     Fonction permettant de multiplier deux matrices
 
@@ -214,14 +221,14 @@ def MultiplicationMatrice(A,B) :
       2      1
       4      3
     """
-    tailleA = (len(A),len(A[0]))
-    tailleB = (len(B),len(B[0]))
+    tailleA = (len(A), len(A[0]))
+    tailleB = (len(B), len(B[0]))
 
-    if not(TestTaille(tailleA, tailleB)) :
+    if not(TestTaille(tailleA, tailleB)):
         print("Tailles de matrices incompatibles")
         print("Impossibilité de multiplier ")
         print(str(tailleA)+" X "+str(tailleB))
-    else :
+    else:
         lc, cc = tailleA[0], tailleB[1]
         C = [[None]*(cc) for i in range(lc)]
         for i in range(lc):
@@ -234,16 +241,16 @@ def MultiplicationMatrice(A,B) :
         return C
 
 
-if __name__ == '__main__' :
+if __name__ == '__main__':
     test = True
-    while test :
+    while test:
         tailleA = SaisieTaille("A")
         tailleB = SaisieTaille("B")
-        test = not(TestTaille(tailleA,tailleB))
+        test = not(TestTaille(tailleA, tailleB))
 
-    A = SaisieMatrice("A",tailleA)
-    AfficheMatrice("A",A)
-    B = SaisieMatrice("B",tailleB)
-    AfficheMatrice("B",B)
-    C = MultiplicationMatrice(A,B)
-    AfficheMatrice("C",C)
+    A = SaisieMatrice("A", tailleA)
+    AfficheMatrice("A", A)
+    B = SaisieMatrice("B", tailleB)
+    AfficheMatrice("B", B)
+    C = MultiplicationMatrice(A, B)
+    AfficheMatrice("C", C)
