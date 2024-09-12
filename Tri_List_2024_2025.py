@@ -84,6 +84,20 @@ def showlist(L,mesg = ''):
     print("-"*long_affich)
 
 def trilist(L):
+    """
+    
+
+    Parameters
+    ----------
+    L : TYPE
+        DESCRIPTION.
+
+    Returns
+    -------
+    Lout : TYPE
+        DESCRIPTION.
+
+    """
     Lout = deepcopy(L)
     permut = True
     while permut :
@@ -95,10 +109,31 @@ def trilist(L):
     return Lout
     
 def saisientier(mesg):
-    n = eval(input(mesg))
-    while (type(n)!=int or (n<0)):
-        n = eval(input(mesg+" SVP "))
-    return n
+    """
+    
+
+    Parameters
+    ----------
+    mesg : TYPE
+        DESCRIPTION.
+
+    Returns
+    -------
+    n : TYPE
+        DESCRIPTION.
+
+    """
+    
+    while True :
+        try :
+            n = eval(input(mesg))
+            test = (type(n)!=int or (n<0))
+            if not(test) :
+                return n
+            else :
+                print("entrez un entier SVP")
+        except NameError:
+            print("entrez un entier SVP")
 
 if __name__ == "__main__":
     n = saisientier('Donnez la longueur de la liste : ')
