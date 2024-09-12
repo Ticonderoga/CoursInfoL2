@@ -7,6 +7,7 @@ Created on Thu Sep 12 10:41:28 2024
 """
 
 from numpy.random import randint
+from copy import deepcopy
 
 def genList(n, high=10):
     """
@@ -52,6 +53,21 @@ def permutation(x,y):
     return y,x
 
 def showlist(L,mesg = ''):
+    """
+    
+
+    Parameters
+    ----------
+    L : TYPE
+        DESCRIPTION.
+    mesg : TYPE, optional
+        DESCRIPTION. The default is ''.
+
+    Returns
+    -------
+    None.
+
+    """
     nmesg = len(mesg)
     Lstr = str(L)
     Lstr = Lstr.replace(' ','')
@@ -66,11 +82,30 @@ def showlist(L,mesg = ''):
     print(blanc_av_list+Lstr)
     
     print("-"*long_affich)
+
+def trilist(L):
+    Lout = deepcopy(L)
+    permut = True
+    while permut :
+        permut = False
+        for i in range(len(Lout)-1):
+            if Lout[i]>Lout[i+1]:
+                Lout[i],Lout[i+1]=permutation(Lout[i], Lout[i+1])
+                permut = True
+    return Lout
     
-       
+def saisientier(mesg):
+    n = eval(input(mesg))
+    while (type(n)!=int or (n<0)):
+        n = eval(input(mesg+" SVP "))
+    return n
 
 if __name__ == "__main__":
-    n = 15
-    L = genList(n, high = 17)
-    showlist(L,'mon message')
+    n = saisientier('Donnez la longueur de la liste : ')
+    Lnt = genList(n, high = 17)
+    Lt = trilist(Lnt)
+    
+    showlist(Lnt,'Voici la liste non triée')
+    showlist(Lt,'Voici la liste triée')
+    
     
